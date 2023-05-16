@@ -81,7 +81,7 @@ const frameSrcUrls = [
   'https://*.stripe.com',
 ];
 
-  
+
 // start express app
 const app = express();
 
