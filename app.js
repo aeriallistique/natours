@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression  = require('compression');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -80,8 +81,6 @@ const fontSrcUrls = [
 const frameSrcUrls = [
   'https://*.stripe.com',
 ];
-
-
 // start express app
 const app = express();
 
@@ -178,7 +177,7 @@ app.use(hpp({
 // app.use(express.static(`${__dirname}/public`));
 
 
-
+app.use(compression());
 // TEST MIDDLEWARE
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
